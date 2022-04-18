@@ -5,7 +5,7 @@ import { CmsContent } from '@lib/cms/CmsContent';
 type Props = {
 } & CmsContent;
 
-const BannerSlot: FC<Props> = ({ content }) => {
+const BannerSlot: FC<React.PropsWithChildren<Props>> = ({ content }) => {
     return <ContentBlock content={content} />;
 }
 

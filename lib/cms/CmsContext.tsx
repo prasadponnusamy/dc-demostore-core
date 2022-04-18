@@ -17,7 +17,7 @@ export function useCmsContext(): CmsContext {
     return React.useContext(Context) as CmsContext;
 }
 
-export const WithCmsContext: FC<{ value: CmsContext }> = ({children, value}) => {
+export const WithCmsContext: FC<React.PropsWithChildren<{ value: CmsContext }>> = ({children, value}) => {
     return <Context.Provider value={value}>
         { children }
     </Context.Provider>;

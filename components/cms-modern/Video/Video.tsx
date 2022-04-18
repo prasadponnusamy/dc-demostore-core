@@ -5,7 +5,7 @@ import { Box } from '@mui/material';
 type Props = {
 } & CmsContent;
 
-const Video: FC<Props> = ({
+const Video: FC<React.PropsWithChildren<Props>> = ({
     video
 }) => {
     if (!video) {

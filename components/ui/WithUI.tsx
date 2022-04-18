@@ -4,7 +4,7 @@ import { WithTheme } from '@components/core';
 import { WithUIContext } from "@components/ui";
 import Head from "next/head";
 
-export const WithUI: FC = ({children}) => {
+export const WithUI: FC<React.PropsWithChildren<unknown>> = ({children}) => {
     return (
         <WithTheme>
             <Head>

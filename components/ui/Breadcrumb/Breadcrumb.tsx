@@ -1,13 +1,13 @@
 import React, { useMemo } from 'react';
-import { Theme, Breadcrumbs, Link } from '@mui/material';
+import { Breadcrumbs, Link } from '@mui/material';
 import { useRouter } from 'next/router';
 import clsx from 'clsx';
 import { NavigationItem, useNavigation } from '@components/core/Masthead';
 import { useUserContext } from '@lib/user/UserContext';
 import { nanoid } from 'nanoid'
-import { withStyles, WithStyles } from '@mui/styles'
+import { makeStyles } from '@mui/styles'
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles({
     root: {
 
     },
@@ -16,7 +16,7 @@ const styles = (theme: Theme) => ({
     }
 });
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
     
@@ -24,10 +24,10 @@ interface Props extends WithStyles<typeof styles> {
     navigationItem?: NavigationItem;
 }
 
-const Breadcrumb: React.SFC<Props> = (props) => {
+const Breadcrumb: React.FC<React.PropsWithChildren<Props>> = (props) => {
+    const classes = useStyles(props)
     const {
         className,
-        classes,
         navigationItem,
         loading = false,
         ...other
@@ -82,4 +82,4 @@ const Breadcrumb: React.SFC<Props> = (props) => {
             </Breadcrumbs>;
 };
 
-export default withStyles(styles)(Breadcrumb);
+export default Breadcrumb

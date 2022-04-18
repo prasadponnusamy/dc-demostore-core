@@ -34,7 +34,7 @@ interface Props extends WithStyles<typeof styles> {
     title: string;
 }
 
-const Accordion: React.SFC<Props> = (props) => {
+const Accordion: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
         classes,
         title,

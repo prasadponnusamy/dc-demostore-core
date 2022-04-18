@@ -9,7 +9,7 @@ interface Props {
     seo:any;
 }
 
-const LandingPage: FC<Props> = ({contentTypes = [], seo = {}}) => {
+const LandingPage: FC<React.PropsWithChildren<Props>> = ({contentTypes = [], seo = {}}) => {
     return <Box>
         <Typography variant='h1' component='h1'>
             {seo.title}

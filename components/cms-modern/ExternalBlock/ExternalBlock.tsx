@@ -6,7 +6,7 @@ type Props = {
 
 } & CmsContent;
 
-const ExternalBlock: FC<Props> = ({
+const ExternalBlock: FC<React.PropsWithChildren<Props>> = ({
     external
 }) => {
     return (

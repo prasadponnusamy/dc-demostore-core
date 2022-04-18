@@ -1,20 +1,20 @@
 import React from 'react';
 import Image from 'next/image';
-import { Theme, Divider, Typography } from '@mui/material';
+import { Divider, Typography } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import ExtensionIcon from '@mui/icons-material/Extension';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import Accordion from '@mui/material/Accordion';
 import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
-import { withStyles, WithStyles } from '@mui/styles'
+import { makeStyles } from '@mui/styles'
 
 import WithAdminTheme from '@components/admin/AdminTheme';
 import { configLocator } from '@lib/config/AppContext';
 import ComponentsPanel from './panels/ComponentsPanel';
 import ContentPreviewPanel from './panels/ContentPreviewPanel';
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles({
   root: {
   },
   logo: {
@@ -29,17 +29,13 @@ const styles = (theme: Theme) => ({
   }
 });
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
   className?: string;
   style?: React.CSSProperties
 }
 
 const AdminPanel: React.FunctionComponent<Props> = (props) => {
-  const {
-    classes,
-    ...other
-  } = props;
-
+  const classes = useStyles(props)
   const configArray = configLocator.split(":");
   const hubname = configArray[0];
   const env = configArray[1];
@@ -84,4 +80,4 @@ const AdminPanel: React.FunctionComponent<Props> = (props) => {
   );
 };
 
-export default withStyles(styles)(AdminPanel);
+export default AdminPanel

@@ -8,20 +8,10 @@ import { LegacySlider, LegacySliderSlide, Section } from '@components/ui';
 import CuratedProductGridCard from './CuratedProductGridCard';
 import { useUserContext } from '@lib/user/UserContext';
 import _ from 'lodash'
-import { withStyles, WithStyles } from '@mui/styles'
-
+import { createStyles, makeStyles } from '@mui/styles'
 import { Product } from '@amplience/dc-demostore-integration';
-import { useAsync } from '@lib/util';
 
-import { 
-  CarouselProvider, 
-  Dot,
-  Slider as PureSlider, 
-  Slide } from 'pure-react-carousel';
-
-import { SliderBackButton, SliderNextButton } from '@components/cms-modern/Slider';
-
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {
   },
   list: {
@@ -32,9 +22,9 @@ const styles = (theme: Theme) => ({
   item: {
     margin: theme.spacing()
   }
-});
+}));
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
   className?: string;
   style?: React.CSSProperties;
   header: string;
@@ -42,14 +32,15 @@ interface Props extends WithStyles<typeof styles> {
   navigationDots?: any;
 }
 
-const CuratedProductGrid: FC<Props> = ({
-  classes,
-  className,
-  header,
-  products = [],
-  navigationDots,
-  ...other
-}) => {
+const CuratedProductGrid: FC<React.PropsWithChildren<Props>> = (props) => {
+  const classes = useStyles(props)
+  const {
+    className,
+    header,
+    products = [],
+    navigationDots,
+    ...other
+  } = props
 
   // Retrieve locale/country code from context - TODO: get language from user context
   const { locale: cmsLocale } = useCmsContext() || {}
@@ -105,4 +96,4 @@ const CuratedProductGrid: FC<Props> = ({
   );
 }
 
-export default withStyles(styles)(CuratedProductGrid);
+export default CuratedProductGrid

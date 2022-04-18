@@ -3,7 +3,7 @@ import NextHead from 'next/head'
 import { DefaultSeo } from 'next-seo'
 import { configLocator } from '@lib/config/AppContext'
 
-const Head: FC = () => {
+const Head: FC<React.PropsWithChildren<unknown>> = () => {
 
     const configArray = configLocator.split(":");
     const hubname = configArray[0];

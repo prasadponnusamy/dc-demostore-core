@@ -21,8 +21,8 @@ interface Props {
     navigationBackgroundColor?: string;
 }
 
-const Masthead: FC<Props> = ({ children, variant = 'default', logo, navigationBackgroundColor }) => {
-    
+const Masthead: FC<Props> = (props) => {
+    const { logo, navigationBackgroundColor } = props
     const {
         openModal
     } = useUI();
@@ -98,7 +98,7 @@ const Masthead: FC<Props> = ({ children, variant = 'default', logo, navigationBa
     } = localeSettings;
 
     return (
-        <NavigationToggleState>
+        <NavigationToggleState {...props}>
             <a id="top" />
             <section className="af-banner-top">
                 { locale === "de-DE" ? 'Profitieren Sie von 10% Rabatt auf Ihren ersten Einkauf mit dem Code FIRST10 an der Kasse - es gelten die AGB'

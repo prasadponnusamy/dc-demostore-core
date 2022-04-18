@@ -106,7 +106,7 @@ const theme = createTheme({
   },
 })
 
-const WithTheme: FC = ({ children }) => {
+const WithTheme: FC<React.PropsWithChildren<unknown>> = ({ children }) => {
   return (
     <StyledEngineProvider injectFirst>
       <ThemeProvider theme={theme}>{children}</ThemeProvider>

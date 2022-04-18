@@ -5,7 +5,7 @@ import SearchResults from './SearchResults';
 import _ from 'lodash'
 import { TextField } from '@mui/material';
 
-const Search: React.FC = () => {
+const Search: React.FC<React.PropsWithChildren<unknown>> = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const handleClick = () => {
     setSearchTerm('');

@@ -36,7 +36,7 @@ interface Props extends WithStyles<typeof styles> {
     }
 }
 
-const MegaMenuSimpleBanner: React.SFC<Props> = (props) => {
+const MegaMenuSimpleBanner: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
         classes,
         className,

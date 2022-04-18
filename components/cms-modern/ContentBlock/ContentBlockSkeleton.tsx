@@ -12,7 +12,7 @@ interface Props {
     schema: string;
 }
 
-const ContentBlockSkeleton: React.SFC<Props> = (props) => {
+const ContentBlockSkeleton: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
         schema,
         ...other

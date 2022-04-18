@@ -36,7 +36,7 @@ interface Props extends PropsWithChildren<WithStyles<typeof styles>> {
     slides: any[];
 }
 
-const Slider: FC<Props> = ({
+const Slider: FC<React.PropsWithChildren<Props>> = ({
         classes,
         className,
         loop = false, 

@@ -42,10 +42,10 @@ const getTypeFromSchema = (schema: string) => {
 }
 
 
-export const WithNavigationContext: FC<{
+export const WithNavigationContext: FC<React.PropsWithChildren<{
     pages: CmsHierarchyNode,
     categories: any
-}> = ({ pages, categories, children }) => {
+}>> = ({ pages, categories, children }) => {
 
     // Retrieve locale/country code from context
     const { locale } = useCmsContext() || {}

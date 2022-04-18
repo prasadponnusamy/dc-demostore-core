@@ -2,7 +2,7 @@ import { ComponentType } from "react";
 import { useConfig } from './ConfigContext';
 
 const withConfig = (key: string) => {
-    return function <T>(Component: ComponentType<T>) {
+    return function <T>(Component: ComponentType<React.PropsWithChildren<T>>) {
         return (props :T) => {
             const config = useConfig();
             if (config && config.values && config.values[key]) {

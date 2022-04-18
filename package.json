@@ -13,12 +13,13 @@
   "dependencies": {
     "@amplience/dc-demostore-integration": "git+https://github.com/amplience/dc-demostore-integration.git",
     "@emotion/core": "^11.0.0",
-    "@emotion/react": "^11.7.1",
-    "@emotion/styled": "^11.6.0",
+    "@emotion/react": "^11.9.0",
+    "@emotion/styled": "^11.8.1",
     "@mui/base": "^5.0.0-alpha.55",
     "@mui/icons-material": "^5.3.1",
     "@mui/material": "^5.4.0",
     "@mui/styles": "^5.3.0",
+    "@mui/system": "^5.6.1",
     "@popperjs/core": "^2.10.2",
     "@types/nprogress": "^0.2.0",
     "algoliasearch": "^4.6.0",
@@ -47,8 +48,8 @@
     "prop-types": "^15.8.1",
     "pure-react-carousel": "^1.27.6",
     "query-string": "^7.1.1",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
+    "react": "^18.0.0",
+    "react-dom": "^18.0.0",
     "react-image-gallery": "^1.2.7",
     "react-loading-skeleton": "^3.0.2",
     "react-moment": "^1.0.0",
@@ -71,7 +72,7 @@
     "@types/json-stringify-safe": "^5.0.0",
     "@types/lodash": "^4.14.168",
     "@types/node": "^17.0.14",
-    "@types/react": "^17.0.38",
+    "@types/react": "^18.0.5",
     "@types/react-image-gallery": "^1.0.4",
     "@types/uuid": "^8.3.4",
     "babel-loader": "^8.2.1",
@@ -87,7 +88,7 @@
   },
   "resolutions": {
     "**/@emotion/styled": "^11.0.0",
-    "@types/react": "17.0.30"
+    "@types/react": "17.0.2"
   },
   "keywords": [
     "amplience",

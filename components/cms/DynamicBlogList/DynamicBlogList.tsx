@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Theme, useMediaQuery, useTheme } from '@mui/material';
 import clsx from 'clsx';
-import { withStyles, WithStyles } from '@mui/styles'
+import { createStyles, makeStyles, withStyles, WithStyles } from '@mui/styles'
 
 import { useAppContext } from '@lib/config/AppContext';
 
@@ -11,7 +11,7 @@ import { Section, LegacySlider, LegacySliderSlide } from '@components/ui';
 import DynamicBlogListCard from './DynamicBlogListCard';
 import { useAsync } from '@lib/util';
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
     },
     list: {
@@ -22,9 +22,9 @@ const styles = (theme: Theme) => ({
     item: {
         margin: theme.spacing()
     }
-});
+}));
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
     header: string;
@@ -33,9 +33,9 @@ interface Props extends WithStyles<typeof styles> {
     query?: string
 }
 
-const DynamicBlogList: React.SFC<Props> = (props) => {
+const DynamicBlogList: React.FC<React.PropsWithChildren<Props>> = (props) => {
+    const classes = useStyles(props)
     const {
-        classes,
         className,
         header,
         tags,
@@ -88,4 +88,4 @@ const DynamicBlogList: React.SFC<Props> = (props) => {
     );
 };
 
-export default withStyles(styles)(DynamicBlogList);
+export default DynamicBlogList

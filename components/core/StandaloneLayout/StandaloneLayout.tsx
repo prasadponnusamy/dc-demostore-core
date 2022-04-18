@@ -11,7 +11,7 @@ interface Props {
     };
 }
 
-const StandaloneLayout: FC<Props> = ({ children, pageProps }) => {
+const StandaloneLayout: FC<React.PropsWithChildren<Props>> = ({ children, pageProps }) => {
     return (
         <WithThemesContext themes={pageProps.hierarchies.themes}>
             <WithCMSTheme

@@ -11,9 +11,9 @@ import { Overlay, InfoPanel } from "@components/ui";
 import { CallToAction } from "..";
 import { DefaultAdaptiveImageSkeleton } from "../AdaptiveImage";
 import { nanoid } from 'nanoid'
-import { makeStyles } from '@mui/styles'
+import { createStyles, makeStyles } from '@mui/styles'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles((theme: Theme) => createStyles({
   root: {},
   image: {
     width: "100%",
@@ -130,20 +130,22 @@ export interface AdvancedBannerProps {
   };
 }
 
-const AdvancedBanner: React.FC<AdvancedBannerProps> = ({
-  image,
-  bgcol,
-  textLines,
-  ctas,
-  overlaypanel,
-  textPositioning = {
-    textPositionHorizontal: "left",
-    textPositionVertical: "middle"
-  },
-  disclaimer,
-  ...other
-}) => {
-  const classes = useStyles();
+const AdvancedBanner: React.FC<React.PropsWithChildren<AdvancedBannerProps>> = (props) => {
+  const classes = useStyles(props);
+
+  const {
+    image,
+    bgcol,
+    textLines,
+    ctas,
+    overlaypanel,
+    textPositioning = {
+      textPositionHorizontal: "left",
+      textPositionVertical: "middle"
+    },
+    disclaimer,
+    ...other
+  } = props
 
   const [imageLoading, setImageLoading] = useState(true);
   const imageRef = useRef<any>();

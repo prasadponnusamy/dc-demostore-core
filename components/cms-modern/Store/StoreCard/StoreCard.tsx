@@ -1,12 +1,12 @@
 import React from 'react';
-import { Theme, Typography, Button, Grid, Paper, Box } from '@mui/material';
+import { Typography, Button, Grid, Paper, Box } from '@mui/material';
 import clsx from 'clsx';
 import Link from 'next/link';
 import ReactMarkdown from 'markdown-to-jsx';
 import Image from '@components/cms-modern/Image'
-import { withStyles, WithStyles } from '@mui/styles'
+import { makeStyles } from '@mui/styles'
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles({
     root: {
         display: 'flex',
         padding: "1rem"
@@ -25,7 +25,7 @@ const styles = (theme: Theme) => ({
     }
 });
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
     content: any;
@@ -37,9 +37,9 @@ const options = {
     }
 };
 
-const StoreCard: React.SFC<Props> = (props) => {
+const StoreCard: React.FC<React.PropsWithChildren<Props>> = (props) => {
+    const classes = useStyles(props)
     const {
-        classes,
         className,
         content,
         ...other
@@ -68,4 +68,4 @@ const StoreCard: React.SFC<Props> = (props) => {
     );
 };
 
-export default withStyles(styles)(StoreCard);
+export default StoreCard

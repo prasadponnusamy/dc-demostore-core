@@ -1,41 +1,54 @@
 import { useUI } from '@components/ui';
 import {
     Backdrop,
+    Box,
     Theme,
     useMediaQuery
 } from '@mui/material';
 import clsx from 'clsx';
 import React from 'react';
-import { withStyles, WithStyles } from '@mui/styles'
+import { createStyles, makeStyles, useTheme } from '@mui/styles'
 
-interface Props extends WithStyles<typeof styles> {}
-const styles = (theme: Theme) => ({
-    root: {},
-    backdrop: {
-        backgroundColor: 'rgba(255,255,255, 0.8)',
-        cursor: 'pointer',
-        zIndex: theme.zIndex.drawer - 1,
-    },
-    icon: {
-        display: 'none',
-        height: 45,
-        width: 45,
-        justifyContent: 'center',
-        alignItems: 'center',
-        position: 'fixed' as 'fixed',
-        left: '80%',
-        zIndex: theme.zIndex.drawer,
-    },
-    iconImage: {
-        height: 17,
-        width: 17,
-    },
-    show: {
-        display: 'flex',
-    },
-});
+interface Props {
+    children: React.ReactElement[]
+}
 
-const NavigationToggleState: React.FC<Props> = ({ classes, children }) => {
+const stylesWithTheme = (theme: Theme) => {
+    return {
+        root: {},
+        backdrop: {
+            backgroundColor: 'rgba(255,255,255, 0.8)',
+            cursor: 'pointer',
+            zIndex: theme.zIndex.drawer - 1,
+        },
+        icon: {
+            display: 'none',
+            height: 45,
+            width: 45,
+            justifyContent: 'center',
+            alignItems: 'center',
+            position: 'fixed' as 'fixed',
+            left: '80%',
+            zIndex: theme.zIndex.drawer,
+        },
+        iconImage: {
+            height: 17,
+            width: 17,
+        },
+        show: {
+            display: 'flex',
+        },
+    }
+}
+
+const useStyles = makeStyles((theme: Theme) => {
+    return createStyles(stylesWithTheme(theme))
+})
+
+const NavigationToggleState: React.FC<Props> = (props) => {
+    const theme = useTheme()
+
+    const classes = useStyles(props)
     const { navigationToggle, toggleNavigation } = useUI();
     const handleToggleNavigation = () => {
         toggleNavigation(navigationToggle);
@@ -43,32 +56,28 @@ const NavigationToggleState: React.FC<Props> = ({ classes, children }) => {
     const isMobile = useMediaQuery('(max-width:750px)');
 
     return (
-        <div
-            className={
-                navigationToggle ? 'navigation--open' : 'navigation--closed'
-            }
-        >
-            <a
-                href="#"
-                className={clsx(classes.icon, {
-                    [classes.show]: isMobile && navigationToggle,
-                })}
-                onClick={handleToggleNavigation}
-            >
-                <img
-                    className={classes.iconImage}
-                    src="/images/ic-anyafinn-close.svg"
-                    alt="close"
-                />
-            </a>
-            <Backdrop
-                className={classes.backdrop}
-                open={isMobile && navigationToggle}
-                onClick={handleToggleNavigation}
-            ></Backdrop>
-            {children}
-        </div>
+        <Box sx={stylesWithTheme(theme)}>
+            <div className={navigationToggle ? 'navigation--open' : 'navigation--closed'}>
+                <a href="#"
+                    className={clsx(classes.icon, {
+                        [classes.show]: isMobile && navigationToggle,
+                    })}
+                    onClick={handleToggleNavigation}>
+                    <img className={classes.iconImage} src="/images/ic-anyafinn-close.svg" alt="close" />
+                </a>
+                <Backdrop
+                    sx={{
+                        backgroundColor: 'rgba(255,255,255, 0.8)',
+                        cursor: 'pointer',
+                        zIndex: theme.zIndex.drawer - 1,
+                    }}
+                    open={isMobile && navigationToggle}
+                    onClick={handleToggleNavigation} />
+
+                {props.children}
+            </div>
+        </Box>
     );
 };
 
-export default withStyles(styles)(NavigationToggleState);
+export default NavigationToggleState;

@@ -1,9 +1,9 @@
-import React, { PropsWithChildren } from 'react';
-import { Theme, Typography } from '@mui/material';
+import React from 'react';
+import { Typography } from '@mui/material';
 import clsx from 'clsx';
-import { withStyles, WithStyles } from '@mui/styles'
+import { makeStyles } from '@mui/styles'
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles({
     root: {
         padding: '40px 50px'
     },
@@ -22,15 +22,15 @@ const styles = (theme: Theme) => ({
     }
 });
 
-interface Props extends PropsWithChildren<WithStyles<typeof styles>> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
     title: string;
 }
 
-const Section: React.SFC<Props> = (props) => {
+const Section: React.FC<React.PropsWithChildren<Props>> = (props) => {
+    const classes = useStyles(props)
     const {
-        classes,
         className,
         title,
         children,
@@ -56,4 +56,4 @@ const Section: React.SFC<Props> = (props) => {
     );
 };
 
-export default withStyles(styles)(Section);
+export default Section

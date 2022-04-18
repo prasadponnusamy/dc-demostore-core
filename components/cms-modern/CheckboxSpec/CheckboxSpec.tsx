@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import './CheckboxSpec.scss';
 import { WithTheme } from '@components/core';
 
-const CheckboxSpec: FC<any> = () => {
+const CheckboxSpec: FC<React.PropsWithChildren<any>> = () => {
     const [state] = React.useState({
         one: true,
         two: true

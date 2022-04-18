@@ -2,10 +2,10 @@ import { useUI } from '@components/ui';
 import { Theme } from '@mui/material';
 import clsx from 'clsx';
 import React from 'react';
-import { withStyles, WithStyles } from '@mui/styles'
+import { makeStyles, withStyles, WithStyles } from '@mui/styles'
 
-interface Props extends WithStyles<typeof styles> {}
-const styles = (theme: Theme) => ({
+interface Props {}
+const useStyles = makeStyles({
     root: {
         display: 'none',
         '@media (max-width: 750px)': {
@@ -24,7 +24,8 @@ const styles = (theme: Theme) => ({
         width: '17px',
     },
 });
-const NavigationToggle: React.FC<Props> = ({ classes }) => {
+const NavigationToggle: React.FC<React.PropsWithChildren<Props>> = (props) => {
+    const classes = useStyles(props)
     const { navigationToggle, toggleNavigation } = useUI();
     const handleToggleNavigation = (
         event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
@@ -46,4 +47,4 @@ const NavigationToggle: React.FC<Props> = ({ classes }) => {
         </a>
     );
 };
-export default withStyles(styles)(NavigationToggle);
+export default NavigationToggle;

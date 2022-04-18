@@ -5,7 +5,7 @@ import { useUserContext } from '@lib/user/UserContext';
 interface Props {
 }
 
-const AccountModal: FC<Props> = ({ }) => {
+const AccountModal: FC<React.PropsWithChildren<Props>> = ({ }) => {
 
     const { closeModal } = useUI();
 

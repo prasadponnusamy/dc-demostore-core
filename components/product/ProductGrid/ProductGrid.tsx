@@ -1,9 +1,9 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import { Theme } from '@mui/material';
 import clsx from 'clsx';
-import { withStyles, WithStyles } from '@mui/styles'
+import { createStyles, makeStyles } from '@mui/styles'
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
         display: 'grid',
         gridRowGap: 1,
@@ -15,16 +15,16 @@ const styles = (theme: Theme) => ({
             gridTemplateColumns: 'repeat(2,calc(50% - 1.00016px))'
         }
     }
-});
+}));
 
-interface Props extends PropsWithChildren<WithStyles<typeof styles>> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
 }
 
-const ProductGrid: React.SFC<Props> = (props) => {
+const ProductGrid: React.FC<React.PropsWithChildren<Props>> = (props) => {
+    const classes = useStyles(props)
     const {
-        classes,
         className,
         children,
         ...other
@@ -37,4 +37,4 @@ const ProductGrid: React.SFC<Props> = (props) => {
     );
 };
 
-export default withStyles(styles)(ProductGrid);
+export default ProductGrid

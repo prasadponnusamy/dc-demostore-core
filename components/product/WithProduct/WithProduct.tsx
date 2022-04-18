@@ -17,7 +17,7 @@ export function useProduct(): ProductContextState | null {
     return useContext(ProductContext);
 }
 
-const WithProduct: FC<Props> = (props: Props) => {
+const WithProduct: FC<React.PropsWithChildren<Props>> = (props: Props) => {
     const [attributes, setAttributes] = useState<any>({});
 
     const setAttribute = (attributeName: string, value: any) => {

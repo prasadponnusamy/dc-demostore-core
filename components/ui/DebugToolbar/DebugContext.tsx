@@ -24,7 +24,7 @@ export function useDebug(): DebugState {
     return useContext(Context) as DebugState;
 }
 
-export const WithDebugState: FC = ({children}) => {
+export const WithDebugState: FC<React.PropsWithChildren<unknown>> = ({children}) => {
     const [debugging, setDebugging] = useState(false);
     const [showSlots, setShowSlots] = useState(false);
     const [showContent, setShowContent] = useState(false);

@@ -11,7 +11,7 @@ interface Props {
     overrideContent?: (content: any) => any;
 }
 
-const ContentBlockStory: FC<Props> = (props) => {
+const ContentBlockStory: FC<React.PropsWithChildren<Props>> = (props) => {
     const {
         request,
         overrideContent

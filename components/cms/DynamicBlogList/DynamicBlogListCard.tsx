@@ -1,13 +1,13 @@
 import React from 'react';
-import { Theme, Button, Typography, Box } from '@mui/material';
+import { Button, Typography, Box } from '@mui/material';
 import clsx from 'clsx';
 import Image from '@components/cms-modern/Image';
 import { CmsContent } from '@lib/cms/CmsContent';
 import { useUserContext } from '@lib/user/UserContext';
 import { nanoid } from 'nanoid'
-import { withStyles, WithStyles } from '@mui/styles'
+import { makeStyles } from '@mui/styles'
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles({
     button: {
         fontFamily: '"Roboto Condensed",sans-serif !important',
         border: '0 !important',
@@ -18,7 +18,7 @@ const styles = (theme: Theme) => ({
     }
 });
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
     data: {
@@ -34,11 +34,10 @@ interface Props extends WithStyles<typeof styles> {
     } & CmsContent;
 }
 
-const DynamicBlogListCard: React.SFC<Props> = (props) => {
+const DynamicBlogListCard: React.FC<React.PropsWithChildren<Props>> = (props) => {
+    const classes = useStyles(props)
     const { language } = useUserContext();
-
     const {
-        classes,
         data,
         className,
         ...other
@@ -99,4 +98,4 @@ const DynamicBlogListCard: React.SFC<Props> = (props) => {
     );
 };
 
-export default withStyles(styles)(DynamicBlogListCard);
+export default DynamicBlogListCard

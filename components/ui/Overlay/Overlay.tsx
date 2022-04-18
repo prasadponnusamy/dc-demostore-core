@@ -1,9 +1,9 @@
-import React, { PropsWithChildren } from 'react';
+import React, { FC, FunctionComponent, PropsWithChildren } from 'react';
 import { Theme } from '@mui/material';
 import clsx from 'clsx';
-import { withStyles, WithStyles } from '@mui/styles'
+import { createStyles, makeStyles, withStyles, WithStyles } from '@mui/styles'
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
         position: 'relative' as 'relative',
     },
@@ -86,9 +86,9 @@ const styles = (theme: Theme) => ({
     floatingTop: {},
     floatingMiddle: {},
     floatingBottom: {}
-});
+}));
 
-interface Props extends PropsWithChildren<WithStyles<typeof styles>> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
     overlayStyle?: React.CSSProperties;
@@ -99,9 +99,9 @@ interface Props extends PropsWithChildren<WithStyles<typeof styles>> {
     floatingVerticalAlignment?: 'top' | 'middle' | 'bottom';
 }
 
-const Overlay: React.SFC<Props> = (props) => {
+const Overlay: React.FunctionComponent<React.PropsWithChildren<Props>> = (props) => {
+    const classes = useStyles(props)
     const {
-        classes,
         className,
         children,
         overlay,
@@ -142,4 +142,4 @@ const Overlay: React.SFC<Props> = (props) => {
     );
 };
 
-export default withStyles(styles)(Overlay);
+export default Overlay;

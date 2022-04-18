@@ -1,6 +1,6 @@
 import React from 'react';
 
-const SearchIcon: React.FC = () => {
+const SearchIcon: React.FC<React.PropsWithChildren<unknown>> = () => {
   return (
     <svg
       version="1.1"

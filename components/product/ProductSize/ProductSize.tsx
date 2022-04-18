@@ -7,7 +7,7 @@ import _ from 'lodash'
 interface Props {
 }
 
-const ProductSize: React.FC<Props> = (props) => {
+const ProductSize: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
     } = props;
 

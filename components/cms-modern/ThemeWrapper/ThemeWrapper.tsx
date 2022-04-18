@@ -11,7 +11,7 @@ interface Props {
     components: CmsContent[];
 }
 
-const ThemeWrapper: FC<Props> = ({theme, components = []}) => {
+const ThemeWrapper: FC<React.PropsWithChildren<Props>> = ({theme, components = []}) => {
     const { themes } = useThemes();
 
     return <WithCMSTheme themes={themes} themeOverride={theme}>

@@ -1,13 +1,12 @@
 import React from 'react';
-import { Theme, Typography, Button } from '@mui/material';
+import { Typography } from '@mui/material';
 import clsx from 'clsx';
 import Link from 'next/link';
-import { useCmsContext } from '@lib/cms/CmsContext';
 import { Product } from '@amplience/dc-demostore-integration';
 import _ from 'lodash'
-import { withStyles, WithStyles } from '@mui/styles'
+import { makeStyles } from '@mui/styles'
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles({
     root: {
         display: 'flex',
         flexDirection: 'column' as 'column',
@@ -56,15 +55,15 @@ const styles = (theme: Theme) => ({
     }
 });
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
     data: Product;
 }
 
-const ProductCardSkeleton: React.SFC<Props> = (props) => {
+const ProductCardSkeleton: React.FC<React.PropsWithChildren<Props>> = (props) => {
+    const classes = useStyles(props)
     const {
-        classes,
         className,
         data,
         ...other
@@ -138,4 +137,4 @@ const ProductCardSkeleton: React.SFC<Props> = (props) => {
     );
 };
 
-export default withStyles(styles)(ProductCardSkeleton);
+export default ProductCardSkeleton

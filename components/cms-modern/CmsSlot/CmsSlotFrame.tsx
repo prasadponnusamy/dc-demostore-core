@@ -8,7 +8,7 @@ import { useAppContext } from '@lib/config/AppContext';
 interface Props {
 }
 
-const CmsSlotFrame: FC<Props> = ({children}) => {
+const CmsSlotFrame: FC<React.PropsWithChildren<Props>> = ({children}) => {
     const {
         id,
         label

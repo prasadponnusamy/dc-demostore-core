@@ -1,21 +1,15 @@
-import React, { PropsWithChildren } from 'react';
-import { Theme } from '@mui/material';
+import React from 'react';
 import clsx from 'clsx';
 import { nanoid } from 'nanoid'
-import { withStyles, WithStyles } from '@mui/styles'
 
-const styles = (theme: Theme) => ({
-});
-
-interface Props extends PropsWithChildren<WithStyles<typeof styles>> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
     index: number;
 }
 
-const LegacySliderSlide: React.SFC<Props> = (props) => {
+const LegacySliderSlide: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
-        classes,
         className,
         children,
         index,
@@ -33,4 +27,4 @@ const LegacySliderSlide: React.SFC<Props> = (props) => {
     );
 };
 
-export default withStyles(styles)(LegacySliderSlide);
+export default LegacySliderSlide

@@ -8,7 +8,7 @@ type Props = {
     format?: string;
 } & CmsContent;
 
-const Image: FC<Props> = ({
+const Image: FC<React.PropsWithChildren<Props>> = ({
     display,
     image,
     imageAltText,

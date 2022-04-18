@@ -1,24 +1,19 @@
 import React, { createRef, useEffect } from 'react';
-import { Theme } from '@mui/material';
 import { useAppContext } from '@lib/config/AppContext';
 import { useProduct } from '../WithProduct/WithProduct';
-import ImageGallery from 'react-image-gallery';
 import _ from 'lodash'
-import { withStyles, WithStyles } from '@mui/styles'
 
-const styles = (theme: Theme) => ({
-});
+const ImageGallery = require('react-image-gallery')
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
     variant?: 'portrait' | 'landscape',
     numItems?: number;
 }
 
-const ProductMediaViewer: React.FunctionComponent<Props> = (props) => {
+const ProductMediaViewer: React.FunctionComponent<React.PropsWithChildren<Props>> = (props) => {
     const {
-        classes,
         variant = 'portrait',
         numItems = 2,
         ...other
@@ -103,4 +98,4 @@ const ProductMediaViewer: React.FunctionComponent<Props> = (props) => {
     }
 };
 
-export default withStyles(styles)(ProductMediaViewer);
+export default ProductMediaViewer

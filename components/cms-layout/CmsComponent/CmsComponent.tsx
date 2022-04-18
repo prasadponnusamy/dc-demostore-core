@@ -61,7 +61,7 @@ const mapping: any = {
     // 'product_image': ProductImage
 };
 
-const CmsComponent: FC<Props> = ({data}) => {
+const CmsComponent: FC<React.PropsWithChildren<Props>> = ({data}) => {
     if (!data) {
         return null;
     }
@@ -72,6 +72,8 @@ const CmsComponent: FC<Props> = ({data}) => {
         slots
     } = data;
     
+    console.log(`Component = ${name}`)
+
     let Component = mapping[name];
     if (!Component) {
         return null;

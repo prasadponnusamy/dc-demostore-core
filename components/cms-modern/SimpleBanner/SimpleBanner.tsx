@@ -5,9 +5,9 @@ import DefaultAdaptiveImage from '../AdaptiveImage/DefaultAdaptiveImage';
 import { Overlay, InfoPanel } from '@components/ui';
 import { CallToAction } from '..';
 import { DefaultAdaptiveImageSkeleton } from '../AdaptiveImage';
-import { makeStyles } from '@mui/styles'
+import { createStyles, makeStyles } from '@mui/styles'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
     }, 
     image: {
@@ -87,16 +87,17 @@ export interface SimpleBannerProps {
     }
 }
 
-const SimpleBanner: React.FC<SimpleBannerProps> = ({
+const SimpleBanner: React.FC<React.PropsWithChildren<SimpleBannerProps>> = (props) => {
+    const classes = useStyles(props);
+    const {
         image,
         bannerText,
         ctaSettings,
         opacity = 0.9,
         textPositioning = { textPositionHorizontal: 'right', textPositionVertical: 'middle' },
         ...other
-    }) => {
+    } = props
 
-    const classes = useStyles();
     const [imageLoading, setImageLoading] = useState(true);
     const imageRef = useRef<any>();
 

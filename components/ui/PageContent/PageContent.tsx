@@ -1,9 +1,8 @@
-import React, { PropsWithChildren } from 'react';
-import { Theme } from '@mui/material';
+import React from 'react';
 import clsx from 'clsx';
-import { withStyles, WithStyles } from '@mui/styles'
+import { makeStyles } from '@mui/styles'
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles({
   root: {
     padding: '0 32px',
     margin: '0 auto',
@@ -11,13 +10,14 @@ const styles = (theme: Theme) => ({
   },
 });
 
-interface Props extends PropsWithChildren<WithStyles<typeof styles>> {
+interface Props {
   className?: string;
   style?: React.CSSProperties;
 }
 
-const PageContent: React.SFC<Props> = (props) => {
-  const { classes, className, children, ...other } = props;
+const PageContent: React.FC<React.PropsWithChildren<Props>> = (props) => {
+  const classes = useStyles(props)
+  const { className, children, ...other } = props;
 
   return (
     <div className={clsx(classes.root, className)} {...other}>
@@ -26,4 +26,4 @@ const PageContent: React.SFC<Props> = (props) => {
   );
 };
 
-export default withStyles(styles)(PageContent);
+export default PageContent

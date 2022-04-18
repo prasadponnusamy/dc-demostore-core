@@ -25,7 +25,7 @@ function remapLabel(label: string) {
     return label;
 }
 
-const CmsSlot: FC<Props> = ({content, children}) => {
+const CmsSlot: FC<React.PropsWithChildren<Props>> = ({content, children}) => {
     const {
         showSlots
     } = useDebug();

@@ -9,7 +9,7 @@ type Props = {
 
 } & CmsContent;
 
-const BlogCard: FC<Props> = ({
+const BlogCard: FC<React.PropsWithChildren<Props>> = ({
     snippet,
     id,
     viewType,

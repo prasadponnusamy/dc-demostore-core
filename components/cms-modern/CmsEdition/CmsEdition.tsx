@@ -17,7 +17,7 @@ export function useCmsEdition(): CmsEditionState | null {
     return useContext(CmsEditionContext);
 }
 
-const CmsEdition: FC<Props> = ({content, children}) => {
+const CmsEdition: FC<React.PropsWithChildren<Props>> = ({content, children}) => {
     const {
         showEditions
     } = useDebug();

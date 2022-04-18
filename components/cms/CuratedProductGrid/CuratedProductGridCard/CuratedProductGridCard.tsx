@@ -1,12 +1,12 @@
 import React from 'react';
-import { Theme, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { useCmsContext } from '@lib/cms/CmsContext';
 import { useContentAnalytics } from '@lib/analytics';
-import { withStyles, WithStyles } from '@mui/styles'
+import { makeStyles } from '@mui/styles'
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles({
     root: {
     },
     imageContainer: {
@@ -35,15 +35,15 @@ const styles = (theme: Theme) => ({
     }
 });
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
     data?: any;
 }
 
-const CuratedProductGridCard: React.SFC<Props> = (props) => {
+const CuratedProductGridCard: React.FC<React.PropsWithChildren<Props>> = (props) => {
+    const classes = useStyles(props)
     const {
-        classes,
         className,
         data: result,
         ...other
@@ -110,4 +110,4 @@ const CuratedProductGridCard: React.SFC<Props> = (props) => {
     );
 };
 
-export default withStyles(styles)(CuratedProductGridCard);
+export default CuratedProductGridCard

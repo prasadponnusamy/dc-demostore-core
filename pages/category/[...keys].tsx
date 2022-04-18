@@ -19,7 +19,7 @@ import { createUserContext } from '@lib/user/UserContext';
 import { Product } from '@amplience/dc-demostore-integration';
 import { nanoid } from 'nanoid'
 import { useContent } from '@components/core/WithVisualization';
-import styles from '../../components/ui/category-styles'
+import useCategoryStyles from '../../components/ui/category-styles'
 import DEFAULT_FACETS from '@lib/util/default-search-facets'
 
 type CategoryPageConfig = {
@@ -69,10 +69,10 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     }
 }
 
-function CategoryPage(props: InferGetServerSidePropsType<typeof getServerSideProps> & WithStyles<typeof styles> & CategoryPageConfig) {
+function CategoryPage(props: InferGetServerSidePropsType<typeof getServerSideProps> & CategoryPageConfig) {
+    const classes = useCategoryStyles()
     const {
         vse,
-        classes,
         content,
         category,
         results,
@@ -122,7 +122,7 @@ function CategoryPage(props: InferGetServerSidePropsType<typeof getServerSidePro
 };
 
 
-const component = withConfig('categoryPage')(withStyles(styles)(CategoryPage));
-(component as any).Layout = Layout;
+const component: any = withConfig('categoryPage')(CategoryPage)
+component.Layout = Layout;
 
-export default component;
+export default component

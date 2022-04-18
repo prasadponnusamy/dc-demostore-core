@@ -47,7 +47,7 @@ const DEFAULT_STATE = {
     lineItems: []
 };
 
-const WithCart: FC = ({ children }) => {
+const WithCart: FC<React.PropsWithChildren<unknown>> = ({ children }) => {
     const loadState = (): CartState | undefined => {
         try {
             const stickyValue = window.localStorage.getItem(LOCAL_STORAGE_KEY);

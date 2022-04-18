@@ -59,7 +59,7 @@ interface Props extends WithStyles<typeof styles> {
   overline: FontDefinition;
 }
 
-const ThemeTypographySpec: FC<Props> = (props) => {
+const ThemeTypographySpec: FC<React.PropsWithChildren<Props>> = (props) => {
   const {
     classes,
     ...other

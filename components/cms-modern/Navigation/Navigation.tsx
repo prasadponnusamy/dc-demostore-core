@@ -13,7 +13,7 @@ interface Props {
   style?: React.CSSProperties;
 }
 
-const Navigation: React.FC<Props> = ({ pages, style }) => {
+const Navigation: React.FC<React.PropsWithChildren<Props>> = ({ pages, style }) => {
   const { navigationToggle, toggleNavigation } = useUI();
   const [selectedMenuKey, setSelectedMenuKey] = useState<number | null>(null);
   const router = useRouter();

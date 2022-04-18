@@ -1,9 +1,9 @@
-import React, { PropsWithChildren } from "react";
+import React, { FunctionComponent, PropsWithChildren } from "react";
 import { Theme } from "@mui/material";
 import clsx from "clsx";
-import { withStyles, WithStyles } from '@mui/styles'
+import { makeStyles, withStyles, WithStyles } from '@mui/styles'
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles({
   root: {
     padding: "40px 60px 40px 60px",
     background: "rgba(255, 255, 255, 0.9)",
@@ -11,7 +11,7 @@ const styles = (theme: Theme) => ({
   },
 });
 
-interface Props extends PropsWithChildren<WithStyles<typeof styles>> {
+interface Props {
   className?: string;
   style?: React.CSSProperties;
   variant?: "default" | "absolute";
@@ -20,9 +20,9 @@ interface Props extends PropsWithChildren<WithStyles<typeof styles>> {
   borderStyle?: string;
 }
 
-const InfoPanel: React.SFC<Props> = (props) => {
+const InfoPanel: FunctionComponent<React.PropsWithChildren<Props>> = (props) => {
+  const classes = useStyles(props)
   const {
-    classes,
     className,
     children,
     variant,
@@ -96,4 +96,4 @@ const InfoPanel: React.SFC<Props> = (props) => {
   );
 };
 
-export default withStyles(styles)(InfoPanel);
+export default InfoPanel;

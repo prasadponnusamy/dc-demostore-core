@@ -8,7 +8,7 @@ import { nanoid } from 'nanoid'
 type Props = {
 } & CmsContent;
 
-const Text: FC<Props> = ({
+const Text: FC<React.PropsWithChildren<Props>> = ({
     header,
     text = [],
     align = 'left'

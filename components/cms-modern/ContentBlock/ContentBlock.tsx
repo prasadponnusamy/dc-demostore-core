@@ -81,7 +81,7 @@ const ComponentMapping: any = {
     
 };
 
-const ContentBlock: FC<Props> = ({content: originalContent, type = 'CONTENT', components = ComponentMapping}) => {
+const ContentBlock: FC<React.PropsWithChildren<Props>> = ({content: originalContent, type = 'CONTENT', components = ComponentMapping}) => {
     const {
         query
     } = useRouter() || {};

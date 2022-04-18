@@ -34,7 +34,7 @@ interface Props extends WithStyles<typeof styles> {
     content: CmsContent[]
 }
 
-const SplitBlock: React.SFC<Props> = (props) => {
+const SplitBlock: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
         classes,
         split = '50/50',

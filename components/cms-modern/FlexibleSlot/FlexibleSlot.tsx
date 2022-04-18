@@ -7,7 +7,7 @@ interface Props {
     contentTypes: CmsContent[]
 }
 
-const FlexibleSlot: FC<Props> = ({contentTypes = []}) => {
+const FlexibleSlot: FC<React.PropsWithChildren<Props>> = ({contentTypes = []}) => {
     return (
         <>
             {

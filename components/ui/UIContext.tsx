@@ -25,7 +25,7 @@ type Action = {
 
 const Context = createContext<(State & Operations) | null>(null);
 
-const Provider: FC = (props) => {
+const Provider: FC<React.PropsWithChildren<unknown>> = (props) => {
     const reducer = (state: State, action: Action): State => {
         switch(action.type) {
             case 'OPEN_MODAL':
@@ -67,7 +67,7 @@ export const useUI = (): State & Operations => {
     return useContext(Context) as State & Operations;
 }
 
-export const WithUIContext: FC = ({children}) => {
+export const WithUIContext: FC<React.PropsWithChildren<unknown>> = ({children}) => {
     return (
         <Provider>
             {children}

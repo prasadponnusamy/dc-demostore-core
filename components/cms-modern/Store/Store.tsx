@@ -15,7 +15,7 @@ interface Props {
     details: string;
 }
 
-const Store: React.SFC<Props> = (props) => {
+const Store: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
         details,
         keyElements,

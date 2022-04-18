@@ -7,9 +7,9 @@ export type ThemesState = {
 
 const ThemesContext = createContext<ThemesState | null>(null);
 
-export const WithThemesContext: FC<{
+export const WithThemesContext: FC<React.PropsWithChildren<{
     themes: CmsHierarchyNode,
-}> = ({ themes, children }) => {
+}>> = ({ themes, children }) => {
 
     return <ThemesContext.Provider value={{ themes }}>
         {children}

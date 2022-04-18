@@ -7,7 +7,7 @@ interface Props {
 
 export type ProductAttributeVariant = 'name' | 'brand' | 'product_id';
 
-const ProductAttribute: React.FC<Props> = (props) => {
+const ProductAttribute: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
         variant = 'name'
     } = props;

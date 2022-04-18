@@ -9,7 +9,7 @@ interface Props {
     variant?: 'outlined' | 'contained'
 }
 
-const Layout: FC<Props> = ({
+const Layout: FC<React.PropsWithChildren<Props>> = ({
     children,
     href,
     className,

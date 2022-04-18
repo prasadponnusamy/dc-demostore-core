@@ -1,7 +1,6 @@
-import React, { FC } from 'react';
-import { Theme } from '@mui/material';
+import React from 'react';
 import { useDebug } from '@components/ui';
-import { withStyles, WithStyles } from '@mui/styles'
+import { makeStyles } from '@mui/styles'
 
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -14,13 +13,13 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import { IconButton } from '@mui/material';
 
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles({
     table: {
         width: '100%'
     }
 });
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
     className?: string;
     style?: React.CSSProperties
 }
@@ -32,11 +31,8 @@ const VisibilityToggle = ({ selected, onClick }: any) => {
     </IconButton>
 }
 
-const ComponentsPanel: FC<Props> = (props) => {
-    const {
-        classes,
-        ...other
-    } = props;
+const ComponentsPanel: React.FunctionComponent<Props> = (props) => {
+    const classes = useStyles(props)
 
     const {
         showContent,
@@ -91,4 +87,4 @@ const ComponentsPanel: FC<Props> = (props) => {
     </>);
 };
 
-export default withStyles(styles)(ComponentsPanel);
+export default ComponentsPanel;

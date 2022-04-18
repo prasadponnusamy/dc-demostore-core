@@ -1,13 +1,8 @@
-import React, { PropsWithChildren, useEffect, createRef } from 'react';
-import { Theme } from '@mui/material';
+import React, { useEffect, createRef } from 'react';
 import clsx from 'clsx';
 import { NavigatePrevious, NavigateNext } from '@components/icons';
-import { withStyles, WithStyles } from '@mui/styles'
 
-const styles = (theme: Theme) => ({
-});
-
-interface Props extends PropsWithChildren<WithStyles<typeof styles>> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
 
@@ -16,9 +11,8 @@ interface Props extends PropsWithChildren<WithStyles<typeof styles>> {
     autoplay?: boolean;
 }
 
-const LegacySlider: React.SFC<Props> = (props) => {
+const LegacySlider: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
-        classes,
         children,
         className,
         navigationDots = false,
@@ -78,4 +72,4 @@ const LegacySlider: React.SFC<Props> = (props) => {
     );
 };
 
-export default withStyles(styles)(LegacySlider);
+export default LegacySlider

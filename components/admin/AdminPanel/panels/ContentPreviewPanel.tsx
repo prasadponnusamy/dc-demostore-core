@@ -1,12 +1,12 @@
-import React, { FC, useState } from 'react';
-import { Theme, Button, TextField, FormControl, InputLabel, Select, MenuItem, CircularProgress } from '@mui/material';
+import React, { useState } from 'react';
+import { Button, TextField, FormControl, InputLabel, Select, MenuItem, CircularProgress } from '@mui/material';
 import { useRouter } from 'next/router';
 import { StagingEnvironmentFactory } from 'dc-delivery-sdk-js';
 import { useCmsContext } from '@lib/cms/CmsContext';
 import { useAppContext } from '@lib/config/AppContext';
-import { withStyles, WithStyles } from '@mui/styles'
+import { makeStyles } from '@mui/styles'
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles({
     root: {
         width: '100%'
     },
@@ -19,16 +19,13 @@ const styles = (theme: Theme) => ({
     }
 });
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
     className?: string;
     style?: React.CSSProperties
 }
 
-const ContentPreviewPanel: FC<Props> = (props) => {
-    const {
-        classes,
-        ...other
-    } = props;
+const ContentPreviewPanel: React.FunctionComponent<Props> = (props) => {
+    const classes = useStyles(props)
 
     const { cms } = useAppContext()
     let stagingApi: string = cms.hub.stagingApi
@@ -136,4 +133,4 @@ const ContentPreviewPanel: FC<Props> = (props) => {
     </>);
 };
 
-export default withStyles(styles)(ContentPreviewPanel);
+export default ContentPreviewPanel;

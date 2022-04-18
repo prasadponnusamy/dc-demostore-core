@@ -24,7 +24,10 @@ interface Props {
     };
 }
 
-const Layout: FC<Props> = ({ children, pageProps }) => {
+const Layout: FC<React.PropsWithChildren<Props>> = (props) => {
+    console.log(`Layout: ${Object.keys(props).join(',')}`)
+
+    const { children, pageProps } = props
     const { currentModal, closeModal } = useUI();
 
     const { debugging, setDebugging } = useDebug();
@@ -55,13 +58,8 @@ const Layout: FC<Props> = ({ children, pageProps }) => {
 
     return (
         <WithThemesContext themes={pageProps.hierarchies.themes}>
-            <WithCMSTheme
-                themes={pageProps.hierarchies.themes}
-            >
-                <WithNavigationContext
-                    pages={pageProps.hierarchies.pages}
-                    categories={pageProps.ecommerce.categories}
-                >
+            <WithCMSTheme themes={pageProps.hierarchies.themes}>
+                <WithNavigationContext pages={pageProps.hierarchies.pages} categories={pageProps.ecommerce.categories}>
                     <div>
                         {/* <DebugToolbar /> */}
                         <PreviewToolbar />
@@ -74,11 +72,7 @@ const Layout: FC<Props> = ({ children, pageProps }) => {
                             {currentModal === 'LOCALE' && <LocaleModal />}
                         </Modal>
 
-                        <Sidebar
-                            variant={'left'}
-                            open={debugging}
-                            onClose={handleCloseDebug}
-                        >
+                        <Sidebar variant={'left'} open={debugging} onClose={handleCloseDebug}>
                             <AdminPanel />
                         </Sidebar>
                     </div>

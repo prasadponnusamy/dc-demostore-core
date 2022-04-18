@@ -33,7 +33,7 @@ interface Props extends WithStyles<typeof styles> {
     style?: React.CSSProperties;
 }
 
-const ProductCardSkeleton: React.SFC<Props> = (props) => {
+const ProductCardSkeleton: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
         classes,
         className,

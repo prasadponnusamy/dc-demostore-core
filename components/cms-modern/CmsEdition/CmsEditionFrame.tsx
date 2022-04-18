@@ -7,7 +7,7 @@ import { Pencil, Calendar } from '@components/icons';
 interface Props {
 }
 
-const CmsEditionFrame: FC<Props> = ({children}) => {
+const CmsEditionFrame: FC<React.PropsWithChildren<Props>> = ({children}) => {
     const {
         id
     } = useCmsEdition() || {};

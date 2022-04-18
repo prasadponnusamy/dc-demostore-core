@@ -2,17 +2,16 @@ import React, { FC } from 'react'
 import { CmsContent } from '@lib/cms/CmsContent';
 import { ContentBlock } from '@components/cms-modern';
 import { WithCMSTheme, useThemes } from '../../core/WithCMSTheme';
-import { Theme } from '@mui/material';
 import { Box } from '@mui/material';
 import { makeStyles } from '@mui/styles'
 
-const useStyles = makeStyles((theme: Theme) => ({
+const useStyles = makeStyles({
     root: {},
     content: {
         maxWidth: 1050,
         margin: "auto"
     }
-}));
+})
 
 /**
  * Blog props
@@ -40,13 +39,15 @@ interface BlogProps {
     theme?: CmsContent;
 }
 
-const Blog: FC<BlogProps> = ({
-    snippet,
-    content,
-    contentTypes = [],
-    theme
-}) => {
-    const classes = useStyles();
+const Blog: FC<React.PropsWithChildren<BlogProps>> = (props) => {
+    const classes = useStyles(props);
+
+    const {
+        snippet,
+        content,
+        contentTypes = [],
+        theme
+    } = props
 
     const Blog = <Box className={classes.root}>
         <Box>

@@ -23,7 +23,7 @@ export function useUserContext(): UserContext {
     return React.useContext(Context) as UserContext;
 }
 
-export const WithUserContext: FC<{ value: UserContext }> = ({children, value}) => {
+export const WithUserContext: FC<React.PropsWithChildren<{ value: UserContext }>> = ({children, value}) => {
     return <Context.Provider value={value}>
         { children }
     </Context.Provider>;

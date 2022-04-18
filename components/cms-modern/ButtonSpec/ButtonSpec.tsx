@@ -4,7 +4,7 @@ import './ButtonSpec.scss';
 import {Button } from '@mui/material';
 import { nanoid } from 'nanoid'
 
-const ButtonSpec: FC<any> = () => {
+const ButtonSpec: FC<React.PropsWithChildren<any>> = () => {
   return (
     <div className="button-spec">
       <ul style={{listStyleType: 'none'}}>

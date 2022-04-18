@@ -9,7 +9,7 @@ interface Props {
 
 }
 
-const PreviewToolbar: FC<Props> = ({ children }) => {
+const PreviewToolbar: FC<React.PropsWithChildren<Props>> = ({ children }) => {
 
     const {
         timestamp,

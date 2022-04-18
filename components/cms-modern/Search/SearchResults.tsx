@@ -48,7 +48,7 @@ function onlyUnique(value: any, index: any, self: any) {
 import { getProducts } from '@lib/ecommerce/api';
 import { useAppContext } from '@lib/config/AppContext';
 
-const SearchResults: React.FC<Props> = (props) => {
+const SearchResults: React.FC<React.PropsWithChildren<Props>> = (props) => {
   const { rootItems } = useNavigation();
   const { searchTerm } = props;
   const [designers, setDesigners] = useState([]);

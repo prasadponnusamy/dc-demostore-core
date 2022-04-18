@@ -10,7 +10,7 @@ type Props = {
     }[];
 } & CmsContent;
 
-const PersonalizedBannerSlot: FC<Props> = ({ segments }) => {
+const PersonalizedBannerSlot: FC<React.PropsWithChildren<Props>> = ({ segments }) => {
     const {
         segment: userSegment = ''
     } = useUserContext() || {};

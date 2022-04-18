@@ -1,12 +1,12 @@
 import React from 'react';
 import { Theme } from '@mui/material';
-import { withStyles, WithStyles } from '@mui/styles'
+import { makeStyles, withStyles, WithStyles } from '@mui/styles'
 
 import { ButtonNext } from 'pure-react-carousel';
 import { NavigateNext } from '@components/icons';
 import clsx from 'clsx';
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles({
     root: {
         display: 'contents'
     },
@@ -23,14 +23,14 @@ const styles = (theme: Theme) => ({
     }
 });
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
 }
 
-const SliderNextButton: React.SFC<Props> = (props) => {
+const SliderNextButton: React.FC<React.PropsWithChildren<Props>> = (props) => {
+    const classes = useStyles(props)
     const {
-        classes,
         className,
         ...other
     } = props;
@@ -42,4 +42,4 @@ const SliderNextButton: React.SFC<Props> = (props) => {
     );
 };
 
-export default withStyles(styles)(SliderNextButton);
+export default SliderNextButton

@@ -7,7 +7,7 @@ import _ from 'lodash'
 interface Props {
 }
 
-const ProductColor: React.FC<Props> = (props) => {
+const ProductColor: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
     } = props;
 

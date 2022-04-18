@@ -1,6 +1,7 @@
 import { Theme } from "@mui/material";
+import { createStyles, makeStyles } from "@mui/styles";
 
-const CategoryStyles = (theme: Theme) => ({
+const useCategoryStyles = makeStyles((theme: Theme) => createStyles({
     hero: {
         padding: '30px 0px'
     },
@@ -35,5 +36,5 @@ const CategoryStyles = (theme: Theme) => ({
         marginTop: 20,
         marginBottom: 40
     }
-});
-export default CategoryStyles
+}));
+export default useCategoryStyles

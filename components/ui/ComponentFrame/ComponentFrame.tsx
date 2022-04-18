@@ -14,7 +14,7 @@ interface Props {
     }
 }
 
-const ComponentFrame: FC<Props> = ({ children, menu, className, MenuProps, OverlayProps }) => {
+const ComponentFrame: FC<React.PropsWithChildren<Props>> = ({ children, menu, className, MenuProps, OverlayProps }) => {
     return (
         <div className={clsx(s.root, className)}>
             <div className={s.content}>

@@ -19,7 +19,7 @@ type ContextState = {
 
 export const AdaptiveImageContext = createContext<ContextState | null>(null);
 
-const AdaptiveImage: React.SFC<AdaptiveImageProps> = (props) => {
+const AdaptiveImage: React.FC<React.PropsWithChildren<AdaptiveImageProps>> = (props) => {
     const {
         image,
         transformations,

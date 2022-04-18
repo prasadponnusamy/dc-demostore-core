@@ -23,7 +23,7 @@ Router.events.on('routeChangeStart', () => NProgress.start());
 Router.events.on('routeChangeComplete', () => NProgress.done());
 Router.events.on('routeChangeError', () => NProgress.done());
 
-const Noop: FC = ({ children }) => <>{children}</>
+const Noop: FC<React.PropsWithChildren<unknown>> = ({ children }) => <>{children}</>
 
 export default class MyApp extends NextApp<AppProps> {
   componentDidMount() {
@@ -51,9 +51,9 @@ export default class MyApp extends NextApp<AppProps> {
     return (
       <>
         <Head />
-        <WithAppContext value={pageProps.context?.appContext}>
-          <WithVisualization>
-            <WithUI>
+        <WithUI>
+          <WithAppContext value={pageProps.context?.appContext}>
+            <WithVisualization>
               <WithCart>
                 <WithUserContext value={pageProps.context?.userContext}>
                   <WithCmsContext value={pageProps.context?.cmsContext}>
@@ -67,9 +67,9 @@ export default class MyApp extends NextApp<AppProps> {
                   </WithCmsContext>
                 </WithUserContext>
               </WithCart>
-            </WithUI>
-          </WithVisualization>
-        </WithAppContext>
+            </WithVisualization>
+          </WithAppContext>
+        </WithUI>
       </>
     )
   }

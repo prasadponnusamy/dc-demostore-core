@@ -1,10 +1,10 @@
 import React from 'react';
 import { Theme, Paper } from '@mui/material';
-import { withStyles, WithStyles } from '@mui/styles'
+import { createStyles, makeStyles } from '@mui/styles'
 import clsx from 'clsx';
 import { alpha } from '@mui/material/styles';
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
 
     },
@@ -51,9 +51,9 @@ const styles = (theme: Theme) => ({
 
     open: {
     }
-});
+}))
 
-interface Props extends WithStyles<typeof styles> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
     open: boolean;
@@ -61,9 +61,9 @@ interface Props extends WithStyles<typeof styles> {
     onClose?: () => void;
 }
 
-const Sidebar: React.SFC<Props> = (props) => {
+const Sidebar: React.FC<React.PropsWithChildren<Props>> = (props) => {
+    const classes = useStyles(props)
     const {
-        classes,
         variant = 'left',
         open,
         children,
@@ -96,4 +96,4 @@ const Sidebar: React.SFC<Props> = (props) => {
     );
 };
 
-export default withStyles(styles)(Sidebar);
+export default Sidebar

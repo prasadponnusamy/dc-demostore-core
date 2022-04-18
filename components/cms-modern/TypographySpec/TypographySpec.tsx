@@ -5,7 +5,7 @@ type Props = {
 
 };
 
-const TypographySpec: FC<Props> = () => {
+const TypographySpec: FC<React.PropsWithChildren<Props>> = () => {
   return (
     <div>
       <Typography variant="h1" component="h1">Heading 1 (H1) - Montserrat Regular CAPS; font-size: 40px; font-color: #666;</Typography>

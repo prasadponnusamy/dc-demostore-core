@@ -3,7 +3,7 @@ import { FormControl, InputLabel, MenuItem, Select } from '@mui/material';
 import React, { FC } from 'react';
 import './SelectSpec.scss';
 
-const SelectSpec: FC<any> = () => {
+const SelectSpec: FC<React.PropsWithChildren<any>> = () => {
     const items = [
         { id: 1, label: 'One' },
         { id: 2, label: 'Two' },

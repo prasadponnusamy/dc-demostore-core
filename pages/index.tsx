@@ -13,19 +13,16 @@ export async function getServerSideProps(context: GetServerSidePropsContext) {
     }
   }, context);
 
-
-const slots = await fetchPageData(
-    {
-        content:{
-            slots: (data.content.page.slots || []).map((x: any) => ({id:x.id}))
-        }
+  const slots = await fetchPageData({
+    content: {
+      slots: (data.content.page.slots || []).map((x: any) => ({ id: x.id }))
     }
-, context)
+  }, context)
 
   return {
     props: {
       ...data,
-      slots:slots.content.slots
+      slots: slots.content.slots
     }
   };
 }

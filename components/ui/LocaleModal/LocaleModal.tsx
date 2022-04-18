@@ -5,7 +5,7 @@ import { useCmsContext } from '@lib/cms/CmsContext';
 interface Props {
 }
 
-const LocaleModal: FC<Props> = ({}) => {
+const LocaleModal: FC<React.PropsWithChildren<Props>> = ({}) => {
 
     const { closeModal } = useUI();
 

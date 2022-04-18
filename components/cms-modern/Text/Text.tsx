@@ -6,7 +6,7 @@ import { Link, Typography, Box } from '@mui/material';
 type Props = {
 } & CmsContent;
 
-const Text: FC<Props> = ({text, align}) => {
+const Text: FC<React.PropsWithChildren<Props>> = ({text, align}) => {
 
     const options = {
         overrides: {

@@ -8,7 +8,7 @@ interface Props {
 
 export type ProductAttributeVariant = 'text';
 
-const ProductRichText: React.FC<Props> = (props) => {
+const ProductRichText: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
         variant = 'text'
     } = props;

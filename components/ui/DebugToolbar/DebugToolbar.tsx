@@ -10,7 +10,7 @@ interface Props {
 
 }
 
-const DebugToolbar: FC<Props> = ({ children }) => {
+const DebugToolbar: FC<React.PropsWithChildren<Props>> = ({ children }) => {
     const {
         debugging,
         showSlots,

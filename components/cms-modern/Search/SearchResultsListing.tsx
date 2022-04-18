@@ -9,7 +9,7 @@ interface Props {
   searchResults: any;
 }
 
-const SearchResultsListing: React.FC<Props> = (props) => {
+const SearchResultsListing: React.FC<React.PropsWithChildren<Props>> = (props) => {
   const { categories, designers, inspiration, searchTerm, searchResults = [] } = props;
 
   if (!categories.length && !designers.length && !inspiration.length && !searchResults.length) {

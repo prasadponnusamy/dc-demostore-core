@@ -54,7 +54,7 @@ export type BlogSnippetProps = {
     keywords: string[];
 };
 
-const BlogSnippet: FC<BlogSnippetProps> = ({
+const BlogSnippet: FC<React.PropsWithChildren<BlogSnippetProps>> = ({
     image,
     title,
     blogdate,

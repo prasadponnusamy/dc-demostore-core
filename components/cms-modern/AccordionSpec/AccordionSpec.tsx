@@ -9,7 +9,7 @@ import './AccordionSpec.scss';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { WithTheme } from '@components/core';
 
-const AccordionSpec: FC<any> = () => {
+const AccordionSpec: FC<React.PropsWithChildren<any>> = () => {
     return (
         <WithTheme>
             <Accordion>

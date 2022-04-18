@@ -11,7 +11,7 @@ type Props = {
 
 } & CmsContent;
 
-const ProductGrid: FC<Props> = ({
+const ProductGrid: FC<React.PropsWithChildren<Props>> = ({
     category,
     limit,
     query

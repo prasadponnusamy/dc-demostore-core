@@ -1,10 +1,10 @@
-import React, { PropsWithChildren } from 'react';
-import { Theme, Accordion, AccordionSummary, Typography, AccordionDetails } from '@mui/material';
+import React from 'react';
+import { Accordion, AccordionSummary, Typography, AccordionDetails } from '@mui/material';
 import clsx from 'clsx';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { withStyles, WithStyles } from '@mui/styles'
+import { makeStyles } from '@mui/styles'
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles({
     root: {
         '&:first-child': {
             borderTop: '1px solid #cbcbcb'
@@ -33,15 +33,15 @@ const styles = (theme: Theme) => ({
     }
 });
 
-interface Props extends PropsWithChildren<WithStyles<typeof styles>> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
     title: string;
 }
 
-const ProductFacet: React.SFC<Props> = (props) => {
+const ProductFacet: React.FC<React.PropsWithChildren<Props>> = (props) => {
+    const classes = useStyles(props)
     const {
-        classes,
         className,
         title,
         children,
@@ -65,4 +65,4 @@ const ProductFacet: React.SFC<Props> = (props) => {
     );
 };
 
-export default withStyles(styles)(ProductFacet);
+export default ProductFacet

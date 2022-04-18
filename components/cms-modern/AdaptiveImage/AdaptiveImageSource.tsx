@@ -6,7 +6,7 @@ interface Props extends React.DetailedHTMLProps<React.SourceHTMLAttributes<HTMLS
     transformations?: ImageTransformations;
 }
 
-const AdaptiveImageSource: React.SFC<Props> = (props) => {
+const AdaptiveImageSource: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
         transformations,
         ...other

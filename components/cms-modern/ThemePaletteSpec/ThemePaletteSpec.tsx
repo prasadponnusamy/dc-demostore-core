@@ -31,7 +31,7 @@ interface Props extends WithStyles<typeof styles> {
   success: Palette;
 }
 
-const ThemePaletteSpec: FC<Props> = (props) => {
+const ThemePaletteSpec: FC<React.PropsWithChildren<Props>> = (props) => {
   const {
     classes,
     ...other

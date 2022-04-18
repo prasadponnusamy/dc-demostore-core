@@ -19,7 +19,7 @@ export const useVisualization = () => {
     return useContext(VisualizationContext) as VisualizationContextState;
 };
 
-const WithVisualization: React.FC<Props> = (props) => {
+const WithVisualization: React.FC<React.PropsWithChildren<Props>> = (props) => {
 
     const [status, setStatus] = useState<VisualizationConnectionStatus>('failed');
     const [sdk, setSDK] = useState<typeof DcVisualizationStatic | null>(null);

@@ -19,7 +19,7 @@ export function useCmsContentItem(): CmsContentItemState | null {
     return useContext(CmsContentItemContext);
 }
 
-const CmsContentItem: FC<Props> = ({content, children}) => {
+const CmsContentItem: FC<React.PropsWithChildren<Props>> = ({content, children}) => {
     const {
         showContent
     } = useDebug();

@@ -12,7 +12,7 @@ interface Props {
     children: (args: {content?: CmsContent}) => React.ReactElement;
 }
 
-export const WithLazyAppContext: React.SFC<Props> = (props) => {
+export const WithLazyAppContext: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
         children,
     } = props;
@@ -27,7 +27,7 @@ export const WithLazyAppContext: React.SFC<Props> = (props) => {
     </Context.Provider> : <div>loading...</div>;
 };
 
-export const WithAppContext: FC<{ value: DemoStoreConfiguration }> = ({children, value}) => {
+export const WithAppContext: FC<React.PropsWithChildren<{ value: DemoStoreConfiguration }>> = ({children, value}) => {
     return <Context.Provider value={value}>
         { children }
     </Context.Provider>;    

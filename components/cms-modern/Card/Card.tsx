@@ -3,11 +3,9 @@ import React from "react";
 import { Grid, CardContent, Typography, Card as MuiCard, CardActions, Button } from '@mui/material';
 import { CmsContent } from '@lib/cms/CmsContent';
 import { ContentBlock } from '@components/cms-modern';
-import { withStyles, WithStyles } from '@mui/styles'
-import { Theme } from '@mui/material';
+import { makeStyles, withStyles, WithStyles } from '@mui/styles'
 
-
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles({
     root: {},
     container: {
         border: "none"
@@ -34,7 +32,7 @@ const styles = (theme: Theme) => ({
     }
 });
 
-export interface CardProps extends WithStyles<typeof styles> {
+export interface CardProps {
     className?: string;
 
     /**
@@ -58,13 +56,15 @@ export interface CardProps extends WithStyles<typeof styles> {
     links?: any[];
 }
 
-const Card: React.FC<CardProps> = ({
-  image,
-  cardName,
-  description,
-  links,
-  classes
-}) => {
+const Card: React.FunctionComponent<React.PropsWithChildren<CardProps>> = (props) => {
+  const classes = useStyles(props)
+  const {
+    image,
+    cardName,
+    description,
+    links
+  } = props
+
   return (
     <Grid item xs={12} sm data-testid="Card" className={classes.root}>
       <MuiCard className={classes.container} style={{
@@ -115,4 +115,4 @@ const Card: React.FC<CardProps> = ({
   )
 };
 
-export default withStyles(styles)(Card);
+export default Card;

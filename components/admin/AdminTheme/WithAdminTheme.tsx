@@ -21,7 +21,7 @@ export function createAdminTheme() {
 
 const theme = createAdminTheme();
 
-const WithAdminTheme: FC = ({children}) => {
+const WithAdminTheme: FC<React.PropsWithChildren<unknown>> = ({children}) => {
     return (
         <StyledEngineProvider injectFirst>
             <ThemeProvider theme={theme}>

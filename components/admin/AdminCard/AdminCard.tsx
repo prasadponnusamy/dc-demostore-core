@@ -1,24 +1,25 @@
-import React, { PropsWithChildren } from 'react';
+import React from 'react';
 import { Theme, Card } from '@mui/material';
-import { withStyles, WithStyles } from '@mui/styles'
+import { createStyles, makeStyles } from '@mui/styles'
 import clsx from 'clsx';
 
-const styles = (theme: Theme) => ({
+const useStyles = makeStyles((theme: Theme) => createStyles({
     root: {
         borderLeft: `6px solid ${theme.palette.primary.main}`,
         width: '100%',
         marginBottom: theme.spacing()
     }
-});
+}));
 
-interface Props extends PropsWithChildren<WithStyles<typeof styles>> {
+interface Props {
     className?: string;
     style?: React.CSSProperties;
+    children: React.ReactElement[]
 }
 
-const AdminCard: React.SFC<Props> = (props) => {
+const AdminCard: React.FC<Props> = (props) => {
+    const classes = useStyles(props)
     const {
-        classes,
         className,
         children,
         ...other
@@ -31,4 +32,4 @@ const AdminCard: React.SFC<Props> = (props) => {
     );
 };
 
-export default withStyles(styles)(AdminCard);
+export default AdminCard

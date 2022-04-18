@@ -7,7 +7,7 @@ type Props = {
 
 } & CmsContent;
 
-const BlogList: FC<Props> = ({
+const BlogList: FC<React.PropsWithChildren<Props>> = ({
     blogs = []
 }) => {
     return (

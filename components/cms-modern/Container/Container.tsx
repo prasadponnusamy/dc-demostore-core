@@ -8,7 +8,7 @@ interface Props {
     contentTypes: CmsContent[];
 }
 
-const Container: FC<Props> = ({contentTypes = []}) => {
+const Container: FC<React.PropsWithChildren<Props>> = ({contentTypes = []}) => {
     return <Box>
         {
             contentTypes.map(item => {

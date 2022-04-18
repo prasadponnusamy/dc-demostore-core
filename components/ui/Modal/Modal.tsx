@@ -8,7 +8,7 @@ interface Props {
     onClose: () => void
 }
 
-const Modal: FC<Props> = ({
+const Modal: FC<React.PropsWithChildren<Props>> = ({
     open = false,
     onClose,
     children,

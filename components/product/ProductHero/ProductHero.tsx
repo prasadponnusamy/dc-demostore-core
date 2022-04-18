@@ -5,7 +5,7 @@ import { useProduct } from '../WithProduct/WithProduct';
 interface Props {
 }
 
-const ProductHero: React.FC<Props> = (props) => {
+const ProductHero: React.FC<React.PropsWithChildren<Props>> = (props) => {
     const {
     } = props;
 

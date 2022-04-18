@@ -11,7 +11,7 @@ import {
 import React, { FC } from 'react';
 import './TableSpec.scss';
 
-const TableSpec: FC<any> = () => {
+const TableSpec: FC<React.PropsWithChildren<any>> = () => {
     const items = [
         { id: 1, label: 'One' },
         { id: 2, label: 'Two' },
